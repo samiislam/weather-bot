@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+ipykernel = "*"
+ipywidgets = "*"
+huggingface-hub = "*"
+langchain-cli = "*"
+sentence-transformers = "*"
+langchain-experimental = "*"
+langsmith = "*"
+langchain = {extras = ["all"], version = "*"}
+langchainhub = "*"
+docarray = "*"
+streamlit = "*"
+pydantic = "==1.10.8"
+datasets = "*"
+pyowm = "*"
+text-generation = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
