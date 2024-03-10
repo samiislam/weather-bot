@@ -16,7 +16,7 @@ def program():
 
     # Initialize chat history for ChatBot
     if "chat_history" not in st.session_state:
-        st.session_state.chat_history = agent.chat_history()
+        st.session_state.chat_history = agent.chat_history
 
     # Display chat messages from history on app rerun
     for message in st.session_state.messages:

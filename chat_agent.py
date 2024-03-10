@@ -27,7 +27,7 @@ class ChatAgent:
         self.__agent_chain = prompt | agent_chain
     
 
-    # TODO: Change this to a property
+    @property
     def chat_history(self) -> ChatMessageHistory:
         return ChatMessageHistory()
     
@@ -36,6 +36,7 @@ class ChatAgent:
 
         try:
             formatted_response = self.__agent_chain.invoke(messages)
+            print(f"Formatted response: {formatted_response}")
             response = formatted_response['output']
         except exceptions.NotFoundError:
             response = "Sorry but I was not able to detect a valid location."
