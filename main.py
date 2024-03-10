@@ -1,9 +1,13 @@
+from langchain_community.callbacks.streamlit import (
+    StreamlitCallbackHandler,
+)
 import streamlit as st
+
 from entity_recognizer import EntityRecognizer
 from chat_agent import ChatAgent
 
 def program():
-    
+   
     agent = ChatAgent()
     entity_recogniser = EntityRecognizer()
         
@@ -50,8 +54,9 @@ def program():
 
         # Display assistant response in chat message container
         assistant = st.chat_message("assistant")
+        st_callback = StreamlitCallbackHandler(assistant)
         
-        response = agent.respond({"messages": st.session_state.chat_history.messages})
+        response = agent.respond({"messages": st.session_state.chat_history.messages}, {"callbacks": [st_callback]})
 
         assistant.markdown(response)
 
