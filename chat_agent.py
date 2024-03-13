@@ -36,8 +36,8 @@ class ChatAgent:
 
         try:
             formatted_response = self.__agent_chain.invoke(messages, callback)
-            print(f"Formatted response = {formatted_response}")
-            response = formatted_response['output']
+            # print(f"Formatted response = {formatted_response}")
+            response = formatted_response['output'].strip('</s>')
         except exceptions.NotFoundError:
             response = "Sorry but I was not able to detect a valid location."
 
