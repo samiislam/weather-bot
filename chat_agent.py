@@ -13,7 +13,7 @@ class ChatAgent:
         """Configure a chat chain."""
 
         # Load the conversational model
-        llm = HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.2", temperature=0.01)
+        llm = HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.2", temperature=0.01, streaming=True)
 
         # Load the tool to query weather information and forecast from OpenWeatherMap
         tools = load_tools(["openweathermap-api"], llm)
