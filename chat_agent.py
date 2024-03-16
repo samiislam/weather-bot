@@ -12,7 +12,7 @@ class ChatAgent:
     
         """Configure a chat chain."""
 
-        # Load the conversational model
+        # Load the instruct model
         llm = HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.2", temperature=0.01)
 
         # Load the tool to query weather information and forecast from OpenWeatherMap
@@ -36,7 +36,6 @@ class ChatAgent:
 
         try:
             formatted_response = self.__agent_chain.invoke(messages)
-            print(f"Formatted response: {formatted_response}")
             response = formatted_response['output']
         except exceptions.NotFoundError:
             response = "Sorry but I was not able to detect a valid location."
