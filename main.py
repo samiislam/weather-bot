@@ -9,7 +9,7 @@ from chat_agent import ChatAgent
 def program():
    
     agent = ChatAgent()
-    entity_recogniser = EntityRecognizer()
+    entity_recognizer = EntityRecognizer()
         
     st.set_page_config(page_title="Chat with the weather", page_icon="🦜")
     st.title("🦜🔗 Hi! I am your WeatherBot")
@@ -36,12 +36,12 @@ def program():
         # Add user message to chat history for UI
         st.session_state.messages.append({"role": "user", "content": user_query})
 
-        if entity_recogniser.locationEntityDetected(user_query):
+        if entity_recognizer.locationEntityDetected(user_query):
             # New location detected. Chat history not required
             st.session_state.chat_history.clear()
         else:
             # Find any location from the chat history since the user did not input one
-            location = entity_recogniser.findLocation(st.session_state.chat_history.messages)
+            location = entity_recognizer.findLocation(st.session_state.chat_history.messages)
             
             if len(location) > 0:
                 # Since there is a location in the chat history
