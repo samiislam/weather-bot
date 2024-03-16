@@ -27,7 +27,7 @@ class ChatAgent:
         self.__agent_chain = prompt | agent_chain
     
 
-    # TODO: Change this to a property
+    @property
     def chat_history(self) -> ChatMessageHistory:
         return ChatMessageHistory()
     
