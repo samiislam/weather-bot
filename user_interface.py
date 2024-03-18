@@ -56,8 +56,10 @@ class UserInterface:
             assistant = st.chat_message("assistant")
             st_callback = StreamlitCallbackHandler(assistant)
             
+            # Get agent response
             response = self.__agent.respond({"messages": st.session_state.chat_history.messages}, {"callbacks": [st_callback]})
 
+            # Show agent response
             assistant.markdown(response)
 
             # Add assistant response to chat history for UI
