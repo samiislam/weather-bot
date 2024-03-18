@@ -52,8 +52,10 @@ class UserInterface:
             # Display assistant response in chat message container
             assistant = st.chat_message("assistant")
             
+            # Get the agent response
             response = self.__agent.respond({"messages": st.session_state.chat_history.messages})
 
+            # Show the agent response
             assistant.markdown(response)
 
             # Add assistant response to chat history for UI
