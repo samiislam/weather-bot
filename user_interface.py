@@ -1,8 +1,36 @@
+"""
+UserInterface allows using Streamlit as the Chat Agent interface
+"""
+
 import streamlit as st
+from chat_agent import ChatAgent
+from entity_recognizer import EntityRecognizer
 
 class UserInterface:
+    """
+    UserInterface uses Streamlit as the Chat Agent interface
+    """
 
-    def __init__(self, agent, entity_recognizer):
+    def __init__(self, agent: ChatAgent, entity_recognizer: EntityRecognizer):
+        """
+        Initializes the object
+
+        The method saves a reference to the ChatAgent
+        and EntityRecognizer objects for use
+
+        Parameters
+        ----------
+        agent : ChatAgent
+            The ChatAgent used by the UI to
+            obtain Chat history and retrieve
+            a response from an user query
+
+        entity_recognizer: EntityRecognizer
+            The EntityRecognizer used to identify
+            and extract location entities present
+            in user queries
+        """
+
         self.__agent = agent
         self.__entity_recognizer = entity_recognizer
 
@@ -24,6 +52,17 @@ class UserInterface:
 
 
     def run(self):
+        """
+        Run the main loop to allow for
+        user input and agent response.
+        The user interface is updated
+        accordingly with the chat history.
+
+        The strategy to use only the last
+        known location, when the user does 
+        not specify one, is defined here.
+        """
+
         # React to user input
         if user_query := st.chat_input(placeholder="🦜 Ask me anything about the weather!"):
         
