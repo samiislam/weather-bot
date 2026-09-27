@@ -781,7 +781,7 @@
                 "sha256:69984268b9867cb31b875965b3f86b6f56ba17dd5454d487d3a1a999bdaeea69"
             ],
             "index": "pypi",
-            "version": "==0.1.23"
+            "version": ">=0.8.18"
         },
         "markdown-it-py": {
             "hashes": [
