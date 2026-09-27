@@ -2406,7 +2406,7 @@
                 "sha256:c5fc7ad682b8a50a48b2a4c05d4ea2de5567adb1bdd00053619dbe5960857dd5"
             ],
             "markers": "python_full_version >= '3.8.0'",
-            "version": "==4.38.2"
+            "version": "==4.48.0"
         },
         "typer": {
             "extras": [
