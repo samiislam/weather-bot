@@ -2,9 +2,10 @@
 ChatAgent allows the communication to the LLM and tools used.
 """
 
-from langchain.agents import initialize_agent, load_tools
-from langchain.memory import ChatMessageHistory
-from langchain_community.llms import HuggingFaceEndpoint
+from langchain_classic.agents import initialize_agent
+from langchain_community.agent_toolkits.load_tools import load_tools
+from langchain_community.chat_message_histories import ChatMessageHistory
+from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.messages import BaseMessage
 
@@ -30,7 +31,9 @@ class ChatAgent:
         """
 
         # Load the instruct model
-        llm = HuggingFaceEndpoint(repo_id="mistralai/Mistral-7B-Instruct-v0.2", temperature=0.01)
+        # Hugging Face only serves this model through the chat (conversational) API
+        endpoint = HuggingFaceEndpoint(repo_id="meta-llama/Llama-3.1-8B-Instruct", task="conversational", temperature=0.01)
+        llm = ChatHuggingFace(llm=endpoint)
 
         # Load the tool to query weather information and forecast from OpenWeatherMap
         tools = load_tools(["openweathermap-api"], llm)
